@@ -3,19 +3,20 @@ from src.ollama_client import generate
 
 def summarize(text):
     prompt = f"""
-Você é um assistente especializado em análise jurídica.
+Resuma o texto legislativo abaixo em UMA única frase.
 
-Sua tarefa é gerar um resumo extremamente fiel ao texto original.
-
-Regras:
-- Use no máximo 1 frase.
-- Preserve o vocabulário original sempre que possível.
-- Evite sinônimos e paráfrases desnecessárias.
-- Não adicione explicações ou interpretações.
+Regras obrigatórias:
+- Produza apenas UMA frase
+- Máximo de 25 palavras
+- Preserve o verbo principal (ex: "Sugere", "Requer", "Susta")
+- Não explique
+- Não adicione contexto
+- Não complemente
+- Use apenas a intenção principal da proposição
+- Se houver múltiplos blocos, priorize o trecho que começa com "INDICAÇÃO" ou "Sugere"
+- Seja o mais próximo possível do enunciado original
 
 Texto:
 {text}
-
-Resumo:
 """
     return generate(prompt)

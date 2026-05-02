@@ -1,12 +1,12 @@
 import pandas as pd
 import json
 
-INPUT_PATH = "../Ulysses-RFCorpus/bills_dataset.csv"
-OUTPUT_PATH = "data/ulysses_sample.json"
+INPUT_PATH = "Ulysses-RFCorpus/bills_dataset.csv"
+OUTPUT_PATH = "data/ulysses_full.json"
 
 df = pd.read_csv(INPUT_PATH)
 
-sample = df.head(30)
+sample = df.sample(n=300, random_state=42)
 
 data = []
 
